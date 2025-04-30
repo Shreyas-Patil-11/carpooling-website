@@ -1,0 +1,408 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Root variables */
+:root {
+  /* Updated color palette - more vibrant primary blue with supporting colors */
+  --primary-blue: 221 83% 53%;    /* Main brand color - vibrant blue */
+  --accent-teal: 174 80% 43%;     /* Complementary accent color */
+  --accent-purple: 262 83% 58%;   /* Secondary accent for special elements */
+  --warm-orange: 36 100% 50%;     /* For emphasis and call-to-action elements */
+  
+  /* Base theme colors */
+  --background: 210 20% 98%;      /* Slightly warmer background */
+  --foreground: 222 47% 11%;      /* Text color */
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  
+  /* Updated to use our new color variables */
+  --primary: var(--primary-blue);
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: var(--accent-teal);
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: var(--primary-blue);
+  --radius: 1rem;  /* Increased border radius for softer edges */
+}
+
+/* Dark mode colors */
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  /* Additional dark mode variables... */
+}
+
+/* Typography updates */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', system-ui, sans-serif; /* Modern distinctive headings */
+  font-weight: 600;
+}
+
+/* Custom animations */
+@keyframes floatingTilt {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(37, 99, 235, 0); }
+  50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+}
+
+@keyframes drawPath {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Enhanced utility classes */
+.animate-floatingTilt {
+  animation: floatingTilt 5s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out both;
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-drawPath {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawPath 2s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, 
+    hsla(var(--primary-blue), 0.1), 
+    hsla(var(--primary-blue), 0.2), 
+    hsla(var(--primary-blue), 0.1)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Journey path styles */
+.journey-path {
+  stroke: hsl(var(--primary-blue));
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 5 10;
+  opacity: 0.6;
+}
+
+/* Card hover effects */
+.card-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Component-specific styles */
+
+/* Header styles */
+header {
+  transition: all 0.3s ease;
+}
+
+header:hover {
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* Button styles */
+button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+button:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Feature card styles */
+.feature-card {
+  transition: all 0.3s ease;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    hsl(var(--primary-blue)), 
+    hsl(var(--accent-teal))
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Hero section gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, 
+    hsla(var(--background), 1) 0%, 
+    hsla(var(--primary-blue), 0.1) 50%, 
+    hsla(var(--accent-teal), 0.05) 100%
+  );
+}
+
+/* Custom input styles */
+input {
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px hsla(var(--primary-blue), 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsla(var(--background), 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsla(var(--primary-blue), 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsla(var(--primary-blue), 0.5);
+}
+
+/* Enhanced glass effect for colored backgrounds */
+.colored-glass-effect {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    hsla(var(--accent-teal), 0.15)
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid hsla(var(--primary-blue), 0.2);
+}
+
+/* Hover effect for ride cards */
+.ride-card-hover {
+  transition: all 0.3s ease;
+}
+
+.ride-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px hsla(var(--accent-teal), 0.2);
+  border-color: hsl(var(--accent-purple));
+}
+
+/* Badge styles for journey visualization */
+.journey-badge {
+  transition: all 0.3s ease;
+}
+
+.journey-badge:hover {
+  background: hsla(var(--primary-blue), 0.2);
+  transform: scale(1.05);
+}
+
+/* Clear filters button (if used in Sidebar) */
+.clear-filters-btn {
+  background: hsl(var(--warm-orange));
+  color: hsl(var(--primary-foreground));
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.clear-filters-btn:hover {
+  background: hsl(var(--warm-orange), 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsla(var(--warm-orange), 0.4);
+}
+
+
+
+
+
+
+
+
+
+
+/* index.css */
+
+/* Glassmorphism effect with fallback */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    hsla(var(--accent-teal), 0.15)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(var(--primary-blue), 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Ride card hover effect */
+.ride-card-hover {
+  transition: all 0.3s ease;
+}
+
+.ride-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px hsla(var(--accent-teal), 0.2);
+  border-color: hsl(var(--accent-purple));
+}
+
+/* Ensure custom colors are defined */
+:root {
+  --primary-blue: 221 83% 53%;
+  --accent-teal: 174 80% 43%;
+  --accent-purple: 262 83% 58%;
+  --warm-orange: 36 100% 50%;
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+  --muted-foreground: 215 16% 47%;
+  --primary-foreground: 210 40% 98%;
+}
+
+/* Optional: Button pulse effect */
+.pulse-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.pulse-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.pulse-button:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+
+
+
+
+
+
+/* Enhanced form field styles */
+.form-item {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius);
+  padding: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: var(--primary-blue);
+  color: var(--primary-foreground);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-blue);
+}
+
+/* Popover content styling */
+.popover-content {
+  border-radius: var(--radius);
+  background-color: var(--card);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Input field focus styles */
+input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px var(--primary-blue);
+}
+
+
+

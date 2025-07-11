@@ -30,7 +30,7 @@ const connectDB = (url) => {
 
 
 app.use(cors({
-  origin: "http://localhost:5173",  // Set specific frontend origin
+  origin: process.env.ORIGIN,  // Set specific frontend origin
   credentials: true, // Allow credentials (cookies, authentication headers)
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers

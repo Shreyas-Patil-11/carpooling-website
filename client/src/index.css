@@ -42,12 +42,18 @@
   /* Additional dark mode variables... */
 }
 
+#root{
+  height: 100%;
+  overflow: visible;
+  position: relative;
+}
+
 /* Typography updates */
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  margin: 0;
+  margin: 1rem;
   padding: 0;
 }
 
@@ -301,7 +307,7 @@ input:focus {
 /* index.css */
 
 /* Glassmorphism effect with fallback */
-.glass-effect {
+/* .glass-effect {
   background: rgba(255, 255, 255, 0.8);
   background: linear-gradient(
     135deg,
@@ -311,7 +317,7 @@ input:focus {
   backdrop-filter: blur(10px);
   border: 1px solid hsla(var(--primary-blue), 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-}
+} */
 
 /* Ride card hover effect */
 .ride-card-hover {
@@ -406,3 +412,151 @@ input:focus {
 
 
 
+
+
+
+
+
+
+
+
+/* ride-detail.css - Additional styles for the RideDetail component */
+
+/* Enhanced journey path styling */
+.journey-path {
+  stroke: hsl(var(--primary-blue));
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 8 12;
+  opacity: 0.8;
+}
+
+/* Improved card animations */
+.card-hover1-effect {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover1-effect:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* Custom styles for ride details */
+.form-item {
+  border-left: 3px solid hsl(var(--primary-blue));
+  background-color: hsla(var(--background), 0.5);
+}
+
+/* Enhance booking button */
+[type="button"] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Enhanced alert dialog styling */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Map container styles */
+.map-container {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced avatar styles */
+.avatar-container {
+  position: relative;
+}
+
+.avatar-container::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, 
+    hsla(var(--primary-blue), 0.3), 
+    hsla(var(--accent-teal), 0.3)
+  );
+  z-index: -1;
+  animation: pulseGlow 3s infinite;
+}
+
+/* Enhanced sections for better separation */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    hsla(var(--primary-blue), 0.3), 
+    transparent
+  );
+  margin: 2rem 0;
+}
+
+/* Icon styling */
+.icon-primary {
+  color: hsl(var(--primary-blue));
+}
+
+/* Badge styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: hsla(var(--primary-blue), 0.1);
+  color: hsl(var(--primary-blue));
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background-color: hsla(var(--primary-blue), 0.2);
+}
+
+/* Price tag styling */
+.price-tag {
+  background: linear-gradient(135deg, 
+    hsl(var(--warm-orange)), 
+    hsl(var(--accent-purple))
+  );
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar for overflow content */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsla(var(--primary-blue), 0.5) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: hsla(var(--primary-blue), 0.5);
+  border-radius: 3px;
+}
+
+/* Enhanced focus styles */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary-blue));
+  outline-offset: 2px;
+}
